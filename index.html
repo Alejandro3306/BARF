@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microempresa BARF</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f7f4;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #3b5d3b, #6b8f6b);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+    header img {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      height: 60px;
+    }
+    nav {
+      background: #6b4423;
+      padding: 0.8rem;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #f4d35e;
+    }
+    section {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: #3b5d3b;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    /* --- Nuestro Equipo --- */
+    .team-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+    .team-member {
+      text-align: center;
+    }
+    .team-member img {
+      width: 100%;
+      max-width: 400px; /* aumentado para imágenes más grandes */
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+    }
+    .team-member h4 {
+      margin: 0.3rem 0;
+      color: #6b4423;
+    }
+    /* --- PHVA Section --- */
+    .phva-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .phva-step {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .phva-step:hover {
+      transform: translateY(-5px);
+    }
+    .phva-step h3 {
+      margin-top: 0;
+      color: #6b4423;
+    }
+    .phva-step ul {
+      padding-left: 20px;
+      text-align: left;
+    }
+    footer {
+      background: #3b5d3b;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="Logo BARF">
+    <h1>Comida BARF para Perros</h1>
+    <p>Alimentación natural, balanceada y saludable</p>
+  </header>
+
+  <nav>
+    <a href="#mision">Misión</a>
+    <a href="#vision">Visión</a>
+    <a href="#objetivos">Objetivos</a>
+    <a href="#equipo">Nuestro Equipo</a>
+    <a href="#phva">PHVA</a>
+  </nav>
+
+  <section id="mision">
+    <h2>Misión</h2>
+    <div class="card">
+      <p>Elaborar comida balanceada y nutritiva para perros, hecha con ingredientes naturales y seguros, que garantice energía, vitalidad y una vida más larga y saludable. Innovamos constantemente priorizando el cuidado animal y el respeto por el medio ambiente.</p>
+    </div>
+  </section>
+
+  <section id="vision">
+    <h2>Visión</h2>
+    <div class="card">
+      <p>Ser la marca líder en nutrición canina, reconocida por ofrecer alimentos de la más alta calidad que promuevan la salud, el bienestar y la felicidad de los perros.</p>
+    </div>
+  </section>
+
+  <section id="objetivos">
+    <h2>Objetivos</h2>
+    <div class="card">
+      <h3>Principal</h3>
+      <p>Contribuir al fortalecimiento del sistema inmunológico y digestivo de los perros mediante dietas biológicamente apropiadas.</p>
+    </div>
+    <div class="card">
+      <h3>Generales</h3>
+      <ul>
+        <li>Innovación constante</li>
+        <li>Bienestar animal</li>
+        <li>Nutrición saludable</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="equipo">
+    <h2>Nuestro Equipo</h2>
+    <div class="card">
+      <div class="team-list">
+        <div class="team-member">
+          <h4>Estructura General</h4>
+          <img src="estructura.png" alt="Estructura Organizacional">
+        </div>
+        <div class="team-member">
+          <h4>Gerente Administrativo</h4>
+          <img src="gerente_administrativo.png" alt="Gerente Administrativo">
+        </div>
+        <div class="team-member">
+          <h4>Gerente de Producción</h4>
+          <img src="gerente_produccion.png" alt="Gerente de Producción">
+        </div>
+        <div class="team-member">
+          <h4>Gerente de Ventas</h4>
+          <img src="gerente_ventas.png" alt="Gerente de Ventas">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="phva">
+    <h2>Ciclo PHVA</h2>
+    <div class="phva-container">
+      <div class="phva-step">
+        <h3>📌 Planear</h3>
+        <ul>
+          <li>Definir misión, visión y objetivos.</li>
+          <li>Diseñar menús por edad y tamaño.</li>
+          <li>Seleccionar proveedores confiables.</li>
+          <li>Plan de ventas y distribución.</li>
+        </ul>
+      </div>
+      <div class="phva-step">
+        <h3>⚙️ Hacer</h3>
+        <ul>
+          <li>Producción bajo normas de higiene.</li>
+          <li>Entrega en óptimas condiciones.</li>
+          <li>Marketing en redes sociales.</li>
+          <li>Gestión financiera y de inventarios.</li>
+        </ul>
+      </div>
+      <div class="phva-step">
+        <h3>🔍 Verificar</h3>
+        <ul>
+          <li>Control de calidad en recetas.</li>
+          <li>Encuestas de satisfacción.</li>
+          <li>Revisión de ventas y clientes.</li>
+          <li>Auditoría contable e inventarios.</li>
+        </ul>
+      </div>
+      <div class="phva-step">
+        <h3>🚀 Actuar</h3>
+        <ul>
+          <li>Ajustar recetas y empaques.</li>
+          <li>Capacitación del personal.</li>
+          <li>Optimizar rutas de entrega.</li>
+          <li>Campañas educativas y promociones.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>🐾 Porque amar a tu cachorro también es cuidar lo que come 🐾</p>
+  </footer>
+
+</body>
+</html>
