@@ -18,6 +18,7 @@
       text-align: center;
       padding: 2rem 1rem;
       position: relative;
+      overflow: hidden;
     }
     header img {
       position: absolute;
@@ -25,6 +26,22 @@
       top: 20px;
       height: 60px;
     }
+    /* --- BANNER PUBLICITARIO --- */
+    .banner {
+      font-size: 1.4rem;
+      font-weight: bold;
+      background: #f4d35e;
+      color: #3b5d3b;
+      padding: 0.8rem;
+      text-align: center;
+      animation: bannerMove 10s infinite linear;
+    }
+    @keyframes bannerMove {
+      0% { background: #f4d35e; color: #3b5d3b; }
+      50% { background: #6b8f6b; color: #fff; }
+      100% { background: #f4d35e; color: #3b5d3b; }
+    }
+
     nav {
       background: #6b4423;
       padding: 0.8rem;
@@ -57,27 +74,66 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    /* --- Nuestro Equipo --- */
+
+    /* --- PUBLICIDAD DESTACADA --- */
+    .promo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .promo-item {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .promo-item:hover {
+      transform: scale(1.05);
+    }
+    .promo-item img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .promo-item h4 {
+      color: #6b4423;
+      margin-bottom: 0.5rem;
+    }
+
+    /* --- SECCIÓN FRASES PROMOCIONALES --- */
+    .frases {
+      background: #6b8f6b;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+      animation: fraseAnim 10s infinite alternate;
+    }
+    @keyframes fraseAnim {
+      0% { background: #6b8f6b; }
+      50% { background: #3b5d3b; }
+      100% { background: #6b8f6b; }
+    }
+
+    /* --- EQUIPO Y PHVA --- */
     .team-list {
       display: flex;
       flex-direction: column;
       gap: 2rem;
       align-items: center;
     }
-    .team-member {
-      text-align: center;
-    }
     .team-member img {
       width: 100%;
-      max-width: 400px; /* aumentado para imágenes más grandes */
+      max-width: 400px;
       border-radius: 10px;
       margin-bottom: 0.5rem;
     }
-    .team-member h4 {
-      margin: 0.3rem 0;
-      color: #6b4423;
-    }
-    /* --- PHVA Section --- */
+
     .phva-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -98,16 +154,87 @@
       margin-top: 0;
       color: #6b4423;
     }
-    .phva-step ul {
-      padding-left: 20px;
-      text-align: left;
-    }
+
+    /* --- FOOTER --- */
     footer {
       background: #3b5d3b;
       color: white;
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem;
       margin-top: 2rem;
+    }
+    .cta {
+      background: #f4d35e;
+      color: #3b5d3b;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-top: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .cta:hover {
+      background: #6b8f6b;
+      color: white;
+    }
+
+    /* === PUBLICIDAD BARF PLUS === */
+    .slider {
+      position: relative;
+      max-width: 900px;
+      margin: 2rem auto;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    .slides {
+      display: flex;
+      width: 300%;
+      animation: slideAnimation 15s infinite;
+    }
+    .slide {
+      width: 100%;
+      position: relative;
+    }
+    .slide img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+    .caption {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      font-size: 1.3rem;
+      padding: 0.8rem 0;
+    }
+    .controls {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .dot {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      background: #ccc;
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .dot:hover {
+      background: #6b8f6b;
+    }
+    @keyframes slideAnimation {
+      0% { transform: translateX(0); }
+      33% { transform: translateX(-100%); }
+      66% { transform: translateX(-200%); }
+      100% { transform: translateX(0); }
     }
   </style>
 </head>
@@ -119,13 +246,42 @@
     <p>Alimentación natural, balanceada y saludable</p>
   </header>
 
-  <nav>
-    <a href="#mision">Misión</a>
-    <a href="#vision">Visión</a>
-    <a href="#objetivos">Objetivos</a>
-    <a href="#equipo">Nuestro Equipo</a>
-    <a href="#phva">PHVA</a>
-  </nav>
+  <div class="banner">🐾 ¡PROMOCIÓN DEL MES! 20% de descuento en tu primera compra BARF 🐾</div>
+
+ <nav>
+  <a href="#mision">Misión</a>
+  <a href="#vision">Visión</a>
+  <a href="#objetivos">Objetivos</a>
+  <a href="#equipo">Nuestro Equipo</a>
+  <a href="#phva">PHVA</a>
+  <a href="#publicidad-plus">Publicidad</a> <!-- 🔥 Nuevo enlace al apartado de publicidad -->
+</nav>
+
+  <section id="publicidad">
+    <h2>Promociones y Publicidad</h2>
+    <div class="promo">
+      <div class="promo-item">
+        <img src="perro_feliz.jpg" alt="Perro feliz con BARF">
+        <h4>💚 100% Natural</h4>
+        <p>Sin químicos ni procesados. Solo ingredientes frescos y amor canino.</p>
+      </div>
+      <div class="promo-item">
+        <img src="Oferta.jpg" alt="Oferta BARF">
+        <h4>🔥 Pack Ahorro BARF</h4>
+        <p>Compra 3 menús y recibe el 4° GRATIS. ¡Tu peludo te lo agradecerá!</p>
+      </div>
+      <div class="promo-item">
+        <img src="Entrega_Barf.jpg" alt="Entrega BARF">
+        <h4>🚚 Entrega a Domicilio</h4>
+        <p>Rápido, fresco y directo a tu puerta. Cuidamos cada detalle.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="frases">
+    🌿 “Porque amar a tu perro también es cuidar lo que come.”  
+    <br> 🍗 “Nutrición natural, energía real, amor BARF.”
+  </div>
 
   <section id="mision">
     <h2>Misión</h2>
@@ -223,9 +379,56 @@
     </div>
   </section>
 
+  <!-- === NUEVO APARTADO PUBLICIDAD BARF PLUS === -->
+  <section id="publicidad-plus" style="background:#eaf2ea; padding:3rem 1rem; text-align:center;">
+    <h2 style="color:#3b5d3b; margin-bottom:1.5rem;">Publicidad BARF Plus</h2>
+    <p style="max-width:800px; margin:auto; color:#555; font-size:1.1rem;">
+      Conoce nuestras nuevas campañas publicitarias y promociones especiales.  
+      BARF Natural trabaja cada día para ofrecer lo mejor en nutrición canina 🐶💚
+    </p>
+
+    <div class="slider">
+      <div class="slides">
+        <div class="slide">
+          <img src="Entrega_Barf.jpg" alt="Promo 1 BARF">
+          <div class="caption">🌿 Alimentos 100% naturales para perros felices</div>
+        </div>
+        <div class="slide">
+          <img src="logo.png" alt="Promo 2 BARF">
+          <div class="caption">🔥 ¡Descuento especial! 15% en todas las recetas BARF</div>
+        </div>
+        <div class="slide">
+          <img src="Oferta.jpg" alt="Promo 3 BARF">
+          <div class="caption">🚚 Envíos gratis por compras superiores a $50.000</div>
+        </div>
+      </div>
+      <div class="controls">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <p>🐾 Porque amar a tu cachorro también es cuidar lo que come 🐾</p>
+    <a href="https://github.com/Alejandro3306/BARF.git" class="cta">Visita Nuestro Repositorio 💻</a>
   </footer>
+
+  <script>
+    // Control manual del carrusel
+    let current = 0;
+    const slides = document.querySelector('.slides');
+    const dots = document.querySelectorAll('.dot');
+
+    function currentSlide(n) {
+      current = n - 1;
+      slides.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach(dot => dot.style.background = '#ccc');
+      dots[current].style.background = '#6b8f6b';
+    }
+  </script>
 
 </body>
 </html>
+
