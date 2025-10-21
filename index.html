@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Microempresa BARF</title>
   <style>
+    html { scroll-behavior: smooth; }
     body {
       font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
@@ -12,6 +13,8 @@
       background: #f4f7f4;
       color: #333;
     }
+
+    /* --- ENCABEZADO --- */
     header {
       background: linear-gradient(135deg, #3b5d3b, #6b8f6b);
       color: white;
@@ -26,7 +29,8 @@
       top: 20px;
       height: 60px;
     }
-    /* --- BANNER PUBLICITARIO --- */
+
+    /* --- BANNER --- */
     .banner {
       font-size: 1.4rem;
       font-weight: bold;
@@ -42,6 +46,7 @@
       100% { background: #f4d35e; color: #3b5d3b; }
     }
 
+    /* --- MENÚ --- */
     nav {
       background: #6b4423;
       padding: 0.8rem;
@@ -54,9 +59,8 @@
       font-weight: bold;
       transition: 0.3s;
     }
-    nav a:hover {
-      color: #f4d35e;
-    }
+    nav a:hover { color: #f4d35e; }
+
     section {
       padding: 2rem;
       max-width: 1000px;
@@ -75,7 +79,7 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
-    /* --- PUBLICIDAD DESTACADA --- */
+    /* --- PROMOCIONES --- */
     .promo {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -89,22 +93,17 @@
       padding: 1rem;
       text-align: center;
       transition: transform 0.3s;
+      cursor: pointer;
     }
-    .promo-item:hover {
-      transform: scale(1.05);
-    }
+    .promo-item:hover { transform: scale(1.05); }
     .promo-item img {
       width: 100%;
       max-width: 300px;
       border-radius: 10px;
       margin-bottom: 1rem;
     }
-    .promo-item h4 {
-      color: #6b4423;
-      margin-bottom: 0.5rem;
-    }
 
-    /* --- SECCIÓN FRASES PROMOCIONALES --- */
+    /* --- FRASES PROMOCIONALES --- */
     .frases {
       background: #6b8f6b;
       color: white;
@@ -147,9 +146,7 @@
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       transition: transform 0.3s;
     }
-    .phva-step:hover {
-      transform: translateY(-5px);
-    }
+    .phva-step:hover { transform: translateY(-5px); }
     .phva-step h3 {
       margin-top: 0;
       color: #6b4423;
@@ -174,12 +171,9 @@
       font-weight: bold;
       transition: 0.3s;
     }
-    .cta:hover {
-      background: #6b8f6b;
-      color: white;
-    }
+    .cta:hover { background: #6b8f6b; color: white; }
 
-    /* === PUBLICIDAD BARF PLUS === */
+    /* --- PUBLICIDAD BARF PLUS --- */
     .slider {
       position: relative;
       max-width: 900px;
@@ -187,6 +181,8 @@
       overflow: hidden;
       border-radius: 12px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      background: white;
+      cursor: pointer;
     }
     .slides {
       display: flex;
@@ -199,8 +195,10 @@
     }
     .slide img {
       width: 100%;
-      height: 400px;
-      object-fit: cover;
+      height: auto;
+      max-height: 450px;
+      object-fit: contain;
+      background-color: #fff;
     }
     .caption {
       position: absolute;
@@ -213,28 +211,45 @@
       font-size: 1.3rem;
       padding: 0.8rem 0;
     }
-    .controls {
-      text-align: center;
-      margin-top: 1rem;
-    }
-    .dot {
-      display: inline-block;
-      width: 15px;
-      height: 15px;
-      background: #ccc;
-      border-radius: 50%;
-      margin: 0 5px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .dot:hover {
-      background: #6b8f6b;
-    }
     @keyframes slideAnimation {
       0% { transform: translateX(0); }
       33% { transform: translateX(-100%); }
       66% { transform: translateX(-200%); }
       100% { transform: translateX(0); }
+    }
+
+    /* --- MODAL PANTALLA COMPLETA --- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+    .modal span {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .modal span:hover { color: #f4d35e; }
+    .modal p {
+      color: white;
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 1rem;
     }
   </style>
 </head>
@@ -248,29 +263,29 @@
 
   <div class="banner">🐾 ¡PROMOCIÓN DEL MES! 20% de descuento en tu primera compra BARF 🐾</div>
 
- <nav>
-  <a href="#mision">Misión</a>
-  <a href="#vision">Visión</a>
-  <a href="#objetivos">Objetivos</a>
-  <a href="#equipo">Nuestro Equipo</a>
-  <a href="#phva">PHVA</a>
-  <a href="#publicidad-plus">Publicidad</a> <!-- 🔥 Nuevo enlace al apartado de publicidad -->
-</nav>
+  <nav>
+    <a href="#mision">Misión</a>
+    <a href="#vision">Visión</a>
+    <a href="#objetivos">Objetivos</a>
+    <a href="#equipo">Nuestro Equipo</a>
+    <a href="#phva">PHVA</a>
+    <a href="#publicidad-plus">Publicidad</a>
+  </nav>
 
   <section id="publicidad">
     <h2>Promociones y Publicidad</h2>
     <div class="promo">
-      <div class="promo-item">
+      <div class="promo-item" onclick="openModal('perro_feliz.jpg','💚 100% Natural - Sin químicos ni procesados. Solo ingredientes frescos y amor canino.')">
         <img src="perro_feliz.jpg" alt="Perro feliz con BARF">
         <h4>💚 100% Natural</h4>
         <p>Sin químicos ni procesados. Solo ingredientes frescos y amor canino.</p>
       </div>
-      <div class="promo-item">
+      <div class="promo-item" onclick="openModal('Oferta.jpg','🔥 Pack Ahorro BARF - Compra 3 menús y recibe el 4° GRATIS.')">
         <img src="Oferta.jpg" alt="Oferta BARF">
         <h4>🔥 Pack Ahorro BARF</h4>
         <p>Compra 3 menús y recibe el 4° GRATIS. ¡Tu peludo te lo agradecerá!</p>
       </div>
-      <div class="promo-item">
+      <div class="promo-item" onclick="openModal('Entrega_Barf.jpg','🚚 Entrega a Domicilio - Rápido, fresco y directo a tu puerta.')">
         <img src="Entrega_Barf.jpg" alt="Entrega BARF">
         <h4>🚚 Entrega a Domicilio</h4>
         <p>Rápido, fresco y directo a tu puerta. Cuidamos cada detalle.</p>
@@ -279,21 +294,21 @@
   </section>
 
   <div class="frases">
-    🌿 “Porque amar a tu perro también es cuidar lo que come.”  
-    <br> 🍗 “Nutrición natural, energía real, amor BARF.”
+    🌿 “Porque amar a tu perro también es cuidar lo que come.” <br>
+    🍗 “Nutrición natural, energía real, amor BARF.”
   </div>
 
   <section id="mision">
     <h2>Misión</h2>
     <div class="card">
-      <p>Elaborar comida balanceada y nutritiva para perros, hecha con ingredientes naturales y seguros, que garantice energía, vitalidad y una vida más larga y saludable. Innovamos constantemente priorizando el cuidado animal y el respeto por el medio ambiente.</p>
+      <p>Elaborar comida balanceada y nutritiva para perros, hecha con ingredientes naturales y seguros...</p>
     </div>
   </section>
 
   <section id="vision">
     <h2>Visión</h2>
     <div class="card">
-      <p>Ser la marca líder en nutrición canina, reconocida por ofrecer alimentos de la más alta calidad que promuevan la salud, el bienestar y la felicidad de los perros.</p>
+      <p>Ser la marca líder en nutrición canina...</p>
     </div>
   </section>
 
@@ -301,15 +316,7 @@
     <h2>Objetivos</h2>
     <div class="card">
       <h3>Principal</h3>
-      <p>Contribuir al fortalecimiento del sistema inmunológico y digestivo de los perros mediante dietas biológicamente apropiadas.</p>
-    </div>
-    <div class="card">
-      <h3>Generales</h3>
-      <ul>
-        <li>Innovación constante</li>
-        <li>Bienestar animal</li>
-        <li>Nutrición saludable</li>
-      </ul>
+      <p>Contribuir al fortalecimiento del sistema inmunológico...</p>
     </div>
   </section>
 
@@ -317,22 +324,10 @@
     <h2>Nuestro Equipo</h2>
     <div class="card">
       <div class="team-list">
-        <div class="team-member">
-          <h4>Estructura General</h4>
-          <img src="estructura.png" alt="Estructura Organizacional">
-        </div>
-        <div class="team-member">
-          <h4>Gerente Administrativo</h4>
-          <img src="gerente_administrativo.png" alt="Gerente Administrativo">
-        </div>
-        <div class="team-member">
-          <h4>Gerente de Producción</h4>
-          <img src="gerente_produccion.png" alt="Gerente de Producción">
-        </div>
-        <div class="team-member">
-          <h4>Gerente de Ventas</h4>
-          <img src="gerente_ventas.png" alt="Gerente de Ventas">
-        </div>
+        <div class="team-member"><h4>Estructura General</h4><img src="estructura.png"></div>
+        <div class="team-member"><h4>Gerente Administrativo</h4><img src="gerente_administrativo.png"></div>
+        <div class="team-member"><h4>Gerente de Producción</h4><img src="gerente_produccion.png"></div>
+        <div class="team-member"><h4>Gerente de Ventas</h4><img src="gerente_ventas.png"></div>
       </div>
     </div>
   </section>
@@ -340,72 +335,19 @@
   <section id="phva">
     <h2>Ciclo PHVA</h2>
     <div class="phva-container">
-      <div class="phva-step">
-        <h3>📌 Planear</h3>
-        <ul>
-          <li>Definir misión, visión y objetivos.</li>
-          <li>Diseñar menús por edad y tamaño.</li>
-          <li>Seleccionar proveedores confiables.</li>
-          <li>Plan de ventas y distribución.</li>
-        </ul>
-      </div>
-      <div class="phva-step">
-        <h3>⚙️ Hacer</h3>
-        <ul>
-          <li>Producción bajo normas de higiene.</li>
-          <li>Entrega en óptimas condiciones.</li>
-          <li>Marketing en redes sociales.</li>
-          <li>Gestión financiera y de inventarios.</li>
-        </ul>
-      </div>
-      <div class="phva-step">
-        <h3>🔍 Verificar</h3>
-        <ul>
-          <li>Control de calidad en recetas.</li>
-          <li>Encuestas de satisfacción.</li>
-          <li>Revisión de ventas y clientes.</li>
-          <li>Auditoría contable e inventarios.</li>
-        </ul>
-      </div>
-      <div class="phva-step">
-        <h3>🚀 Actuar</h3>
-        <ul>
-          <li>Ajustar recetas y empaques.</li>
-          <li>Capacitación del personal.</li>
-          <li>Optimizar rutas de entrega.</li>
-          <li>Campañas educativas y promociones.</li>
-        </ul>
-      </div>
+      <div class="phva-step"><h3>📌 Planear</h3><ul><li>Definir misión, visión...</li></ul></div>
+      <div class="phva-step"><h3>⚙️ Hacer</h3><ul><li>Producción bajo normas...</li></ul></div>
+      <div class="phva-step"><h3>🔍 Verificar</h3><ul><li>Control de calidad...</li></ul></div>
+      <div class="phva-step"><h3>🚀 Actuar</h3><ul><li>Ajustar recetas...</li></ul></div>
     </div>
   </section>
 
-  <!-- === NUEVO APARTADO PUBLICIDAD BARF PLUS === -->
   <section id="publicidad-plus" style="background:#eaf2ea; padding:3rem 1rem; text-align:center;">
-    <h2 style="color:#3b5d3b; margin-bottom:1.5rem;">Publicidad BARF Plus</h2>
-    <p style="max-width:800px; margin:auto; color:#555; font-size:1.1rem;">
-      Conoce nuestras nuevas campañas publicitarias y promociones especiales.  
-      BARF Natural trabaja cada día para ofrecer lo mejor en nutrición canina 🐶💚
-    </p>
-
-    <div class="slider">
+    <h2 style="color:#3b5d3b;">Publicidad BARF Plus</h2>
+    <div class="slider" onclick="openModal(currentBanner.src,currentBanner.alt)">
       <div class="slides">
-        <div class="slide">
-          <img src="Entrega_Barf.jpg" alt="Promo 1 BARF">
-          <div class="caption">🌿 Alimentos 100% naturales para perros felices</div>
-        </div>
-        <div class="slide">
-          <img src="logo.png" alt="Promo 2 BARF">
-          <div class="caption">🔥 ¡Descuento especial! 15% en todas las recetas BARF</div>
-        </div>
-        <div class="slide">
-          <img src="Oferta.jpg" alt="Promo 3 BARF">
-          <div class="caption">🚚 Envíos gratis por compras superiores a $50.000</div>
-        </div>
-      </div>
-      <div class="controls">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
+        <div class="slide"><img src="tobi.jpg" alt="🌿 Alimentos 100% naturales para perros felices"><div class="caption">🌿 Alimentos 100% naturales para perros felices</div></div>
+        <div class="slide"><img src="tobi_2.jpg" alt="🔥 ¡Descuento especial! 15% en todas las recetas BARF"><div class="caption">🔥 ¡Descuento especial! 15% en todas las recetas BARF</div></div>
       </div>
     </div>
   </section>
@@ -415,20 +357,40 @@
     <a href="https://github.com/Alejandro3306/BARF.git" class="cta">Visita Nuestro Repositorio 💻</a>
   </footer>
 
+  <!-- Modal de imagen -->
+  <div id="imgModal" class="modal">
+    <span onclick="closeModal()">&times;</span>
+    <img id="modalImg">
+    <p id="modalText"></p>
+  </div>
+
   <script>
-    // Control manual del carrusel
+    // Carrusel
     let current = 0;
     const slides = document.querySelector('.slides');
-    const dots = document.querySelectorAll('.dot');
+    const banners = document.querySelectorAll('.slide img');
+    let currentBanner = banners[0];
+    slides.addEventListener('animationiteration', () => {
+      current = (current + 1) % banners.length;
+      currentBanner = banners[current];
+    });
 
-    function currentSlide(n) {
-      current = n - 1;
-      slides.style.transform = `translateX(-${current * 100}%)`;
-      dots.forEach(dot => dot.style.background = '#ccc');
-      dots[current].style.background = '#6b8f6b';
+    // Modal
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalText = document.getElementById('modalText');
+
+    function openModal(src, text) {
+      modal.style.display = 'flex';
+      modalImg.src = src;
+      modalText.innerText = text;
     }
-  </script>
 
+    function closeModal() { modal.style.display = 'none'; }
+
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
 </body>
 </html>
-
